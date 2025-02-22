@@ -1,6 +1,6 @@
 const initialState = {
   list: {
-    content: ["u2", "pink floid", "led leppelin"],
+    content: ["u2", "bob dylan", "led leppelin"],
   },
 };
 
