@@ -1,8 +1,8 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import artistReducer from "../reducers/artistReducer";
+import artistsReducer from "../reducers/artistsReducer";
 
 const rootReducer = combineReducers({
-  artist: artistReducer,
+  artists: artistsReducer,
 });
 
 const store = configureStore({

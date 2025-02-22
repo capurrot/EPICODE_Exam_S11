@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import SongList from "./SongList";
 
 const MainComponent = () => {
-  const artists = useSelector((state) => state.artist.list);
+  const artists = useSelector((state) => state.artists.list);
   console.log(artists);
 
   return (
