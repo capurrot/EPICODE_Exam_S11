@@ -1,8 +1,20 @@
 import { BsBookFill, BsHouseDoorFill } from "react-icons/bs";
 import logo from "../assets/logo/logo.png";
-import { Navbar, Button, NavLink } from "react-bootstrap";
+import { Navbar, Button, NavLink, Form, InputGroup, FormControl } from "react-bootstrap";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { SEARCH_ARTIST } from "../redux/actions";
 
 const AsideComponent = () => {
+  const [query, setQuery] = useState("");
+  const dispatch = useDispatch();
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    dispatch({ type: SEARCH_ARTIST, payload: query });
+    setQuery("");
+  };
+
   return (
     <aside className="col col-2">
       <Navbar className="navbar navbar-expand-md fixed-left justify-content-between" id="sidebar">
@@ -33,18 +45,24 @@ const AsideComponent = () => {
                 <li>
                   <a className="nav-item nav-link d-flex align-items-center" href="#">
                     <BsBookFill />
-                    &nbsp; Your Library
+                    &nbsp; Your Library+
                   </a>
                 </li>
                 <li>
-                  <div className="input-group mt-3">
-                    <input type="text" className="form-control" placeholder="Search" aria-label="Search" />
-                    <div className="input-group-append">
-                      <Button variant="outline-secondary" className="btn btn-sm h-100">
+                  <Form onSubmit={handleSearch} className="mt-3">
+                    <InputGroup>
+                      <FormControl
+                        type="text"
+                        placeholder="Search"
+                        aria-label="Search"
+                        value={query}
+                        onChange={(e) => setQuery(e.target.value)}
+                      />
+                      <Button variant="outline-secondary" type="submit">
                         GO
                       </Button>
-                    </div>
-                  </div>
+                    </InputGroup>
+                  </Form>
                 </li>
               </ul>
             </div>
