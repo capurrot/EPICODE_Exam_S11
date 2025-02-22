@@ -3,3 +3,5 @@ export const FETCH_ERR = "FETCH_ERR";
 export const SELECT_ARTIST = "SELECT_ARTIST";
 export const SELECT_SONG = "SELECT_SONG";
 export const SEARCH_ARTIST = "SEARCH_ARTIST";
+export const ADD_FAVOURITES = "ADD_FAVOURITES";
+export const REMOVE_FAVOURITES = "REMOVE_FAVOURITES";

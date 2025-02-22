@@ -189,6 +189,10 @@ ul {
   cursor: pointer;
 }
 
+.heart:hover {
+  color: orange;
+}
+
 .infoArtist {
   font-size: 12px;
   color: white;
