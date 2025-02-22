@@ -4,15 +4,19 @@ import "./App.css";
 import AsideComponent from "./components/AsideComponent";
 import PlayerComponent from "./components/PlayerComponent";
 import MainComponent from "./components/MainComponent";
+import { Provider } from "react-redux";
+import store from "./redux/store";
 
 function App() {
   return (
     <>
-      <Container fluid>
-        <AsideComponent />
-        <MainComponent />
-        <PlayerComponent />
-      </Container>
+      <Provider store={store}>
+        <Container fluid>
+          <AsideComponent />
+          <MainComponent />
+          <PlayerComponent />
+        </Container>
+      </Provider>
     </>
   );
 }
