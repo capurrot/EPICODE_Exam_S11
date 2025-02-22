@@ -184,3 +184,9 @@ ul {
   color: red;
   cursor: pointer;
 }
+
+.infoArtist {
+  font-size: 12px;
+  color: white;
+  font-weight: 700;
+}

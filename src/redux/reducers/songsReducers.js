@@ -1,8 +1,11 @@
-import { FETCH_ERR, FETCH_OK } from "../actions";
+import { FETCH_ERR, FETCH_OK, SELECT_SONG } from "../actions";
 
 const initialState = {
   songs: {
     content: [],
+  },
+  songSelected: {
+    content: null,
   },
   isloading: false,
   error: null,
@@ -21,6 +24,14 @@ const songsReducer = (state = initialState, action) => {
       };
     case FETCH_ERR:
       return { ...state, isloading: false, error: action.payload };
+    case SELECT_SONG:
+      return {
+        ...state,
+        songSelected: {
+          ...state.songSelected,
+          content: action.payload,
+        },
+      };
     default:
       return state;
   }
