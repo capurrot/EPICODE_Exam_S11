@@ -1,5 +1,7 @@
 const initialState = {
-  content: ["u2", "pink floid", "led leppelin"],
+  list: {
+    content: ["u2", "pink floid", "led leppelin"],
+  },
 };
 
 const artistsReducer = (state = initialState, action) => {

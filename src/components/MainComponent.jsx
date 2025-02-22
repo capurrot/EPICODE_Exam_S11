@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import SongList from "./SongList";
 
 const MainComponent = () => {
-  const artists = useSelector((state) => state.artists.content);
+  const artists = useSelector((state) => state.artists.list.content);
 
   return (
     <main className="col-12 col-md-9 offset-md-3 mainPage">
