@@ -1,6 +1,10 @@
+import { useSelector } from "react-redux";
 import SongList from "./SongList";
 
 const MainComponent = () => {
+  const artists = useSelector((state) => state.artist.list);
+  console.log(artists);
+
   return (
     <main className="col-12 col-md-9 offset-md-3 mainPage">
       <div className="row">
@@ -12,15 +16,11 @@ const MainComponent = () => {
           <a href="#">DISCOVER</a>
         </div>
       </div>
-      <div className="row">
-        <SongList artist={"u2"} className="col-10" />
-      </div>
-      <div className="row">
-        <SongList artist={"queen"} className="col-10" />
-      </div>
-      <div className="row">
-        <SongList artist={"pink floyd"} className="col-10" />
-      </div>
+      {artists.map((artist) => (
+        <div className="row" key={artist}>
+          <SongList artist={artist} className="col-10" />
+        </div>
+      ))}
     </main>
   );
 };
