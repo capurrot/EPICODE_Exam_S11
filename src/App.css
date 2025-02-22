@@ -173,3 +173,14 @@ ul {
 .mainPage img {
   width: 200px;
 }
+
+.heart {
+  position: relative;
+  top: -45px;
+  left: 80px;
+  background: transparent;
+  border: transparent;
+  font-size: 2rem;
+  color: red;
+  cursor: pointer;
+}
