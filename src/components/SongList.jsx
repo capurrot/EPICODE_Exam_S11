@@ -37,7 +37,10 @@ const SongList = ({ artist, artIndex }) => {
         {/* Per come ho pensato la struttura delle row e dello stato della ricerca che non cambia ogni volta ma che aggiunge 
             una nuova riga per poter verificare che il preferito resti in memoria anche se la row non è più presente imposto
             un bottone che eliminerà la row e se ricercato ancora l'artista dovrà esserci ancora il preferito.
-            Si può verificaare la stessa cosa selezinando un preferito e ricercando di nuovo l'artista e il preferito è già presente
+            Si può verificaare la stessa cosa selezinando un preferito e ricercando di nuovo l'artista e il preferito è già presente.
+            Altra cosa interessante è che se si clicca su un'immagine che era tra i preferiti e poi si elimina la row, comunque
+            l'immagine che è ancora presente sul player (ovviamente fino a quando non si clicca su un'altra immagine) vvisualizza ancora
+            lo stato di preferito.
             */}
         <h2>
           {songs !== undefined && songs[0].artist.name}

@@ -2,7 +2,8 @@ import { REMOVE_ARTIST, SEARCH_ARTIST } from "../actions";
 
 const initialState = {
   list: {
-    content: ["u2", "bob dylan", "led leppelin"],
+    /* Adesso oltre alle città colombiane mettiamo anche la musica. Se non ha capito che mi piace la Colombia :-) */
+    content: ["los diablitos", "pibe bueno", "felipe pelaez"],
   },
 };
 

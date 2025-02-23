@@ -10,7 +10,13 @@ import { BsFillHeartFill } from "react-icons/bs";
 const PlayerComponent = () => {
   const songSelected = useSelector((state) => state.songs.songSelected.content);
   const favourites = useSelector((state) => state.songs.favourites.content);
-  const isSongInFavourites = favourites.some((favSong) => favSong.id === songSelected.id);
+  let isSongInFavourites = false;
+
+  /* Ho dovuto aggiungere questo controllo perchè se mettevo un preferito senza avere giò l'immagine presente nel 
+  player si rompeva tutto */
+  if (songSelected && favourites) {
+    isSongInFavourites = favourites.some((favSong) => favSong.id === songSelected.id);
+  }
 
   return (
     <Container fluid className="fixed-bottom bg-container pt-1">
