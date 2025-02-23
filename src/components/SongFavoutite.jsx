@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { ADD_FAVOURITES, REMOVE_FAVOURITES, SELECT_SONG } from "../redux/actions";
-import { BsFillHeartFill, BsHeart } from "react-icons/bs";
+import { REMOVE_FAVOURITES, SELECT_SONG } from "../redux/actions";
+import { BsFillHeartFill } from "react-icons/bs";
 
 const SongFavourite = ({ song }) => {
   const dispatch = useDispatch();
@@ -17,13 +17,11 @@ const SongFavourite = ({ song }) => {
             alt="track"
             onClick={() => dispatch({ type: SELECT_SONG, payload: song })}
           />
-          {isSongInFavourites ? (
+          {isSongInFavourites && (
             <BsFillHeartFill
-              className="heart"
+              className="heartFavourite"
               onClick={() => dispatch({ type: REMOVE_FAVOURITES, payload: song.id })}
             />
-          ) : (
-            <BsHeart className="heart" onClick={() => dispatch({ type: ADD_FAVOURITES, payload: song })} />
           )}
         </div>
         <p style={{ marginTop: "-30px" }}>

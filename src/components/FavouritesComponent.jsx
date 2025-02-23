@@ -1,6 +1,8 @@
 import { useSelector } from "react-redux";
 import SongListFavourites from "./SongListFavourites";
 
+/* Per poter gestire una pagina di preferiti e ho dovuto create alcuni componenti solo per le songs favourites*/
+
 const FavouritesComponent = () => {
   const favouritesSongs = useSelector((state) => state.songs.favourites.content);
 
@@ -15,17 +17,16 @@ const FavouritesComponent = () => {
           <a href="#">DISCOVER</a>
         </div>
       </div>
-      <div id="rock">
+
+      <div id="rock" className="col-10">
         <h2>Preferiti</h2>
-        <div id="rock" className="col-10">
-          <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 imgLinks py-3">
-            {favouritesSongs.map((song, artIndex) => (
-              <div key={artIndex} className="col">
-                {console.log(song, artIndex)}
-                <SongListFavourites song={song} />
-              </div>
-            ))}
-          </div>
+        <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 imgLinks py-3">
+          {favouritesSongs.map((song, artIndex) => (
+            <div key={artIndex} className="col text-center">
+              {console.log(song, artIndex)}
+              <SongListFavourites song={song} />
+            </div>
+          ))}
         </div>
       </div>
     </main>
