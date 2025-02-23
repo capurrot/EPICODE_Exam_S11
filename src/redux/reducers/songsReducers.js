@@ -1,4 +1,4 @@
-import { ADD_FAVOURITES, FETCH_ERR, FETCH_OK, REMOVE_FAVOURITES, SELECT_SONG } from "../actions";
+import { ADD_FAVOURITES, FETCH_ERR, FETCH_OK, IS_LOADING, REMOVE_FAVOURITES, SELECT_SONG } from "../actions";
 
 const initialState = {
   songs: {
@@ -26,7 +26,7 @@ const songsReducer = (state = initialState, action) => {
         isloading: false,
       };
     case FETCH_ERR:
-      return { ...state, isloading: false, error: action.payload };
+      return { ...state, error: action.payload };
     case SELECT_SONG:
       return {
         ...state,
@@ -51,6 +51,12 @@ const songsReducer = (state = initialState, action) => {
           content: state.favourites.content.filter((fav) => fav.id !== action.payload),
         },
       };
+    case IS_LOADING:
+      return {
+        ...state,
+        isloading: action.payload,
+      };
+
     default:
       return state;
   }
