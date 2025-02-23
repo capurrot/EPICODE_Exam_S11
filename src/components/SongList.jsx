@@ -10,6 +10,10 @@ const SongList = ({ artist, artIndex }) => {
   const [songs, setSongs] = useState();
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.songs.isloading);
+
+  /* Come vede ho cercato di impostare una parte relativa agli errori. Ma esplode l'app e non mi fa vedere gli errori.
+  Magari questo potrebbe rispiegarmelo? Grazie... */
+
   const error = useSelector((state) => state.songs.error);
 
   /* Ho provato anche a impostare una differente visualizzazione degli spinner con tempi di partenza differenti.
