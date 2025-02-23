@@ -1,12 +1,13 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import Song from "./Song";
 import { useEffect, useState } from "react";
-import { FETCH_ERR, FETCH_OK } from "../redux/actions";
+import { FETCH_ERR, FETCH_OK, REMOVE_ARTIST } from "../redux/actions";
+import { BsTrash3Fill } from "react-icons/bs";
 
-const SongList = ({ artist }) => {
+const SongList = ({ artist, artIndex }) => {
   const [songs, setSongs] = useState();
   const dispatch = useDispatch();
-  const songsRedux = useSelector((state) => state.songs.songs.content);
+  /* const songsRedux = useSelector((state) => state.songs.songs.content); */
   /*   const isLoading = useSelector((state) => state.songs.isloading);
   const error = useSelector((state) => state.songs.error); */
 
@@ -33,8 +34,15 @@ const SongList = ({ artist }) => {
   return (
     <div className="col-10">
       <div id="rock">
-        {console.log(songsRedux)}
-        <h2>{songs !== undefined && songs[0].artist.name}</h2>
+        {/* Per come ho pensato la struttura delle row e dello stato della ricerca che non cambia ogni volta ma che aggiunge 
+            una nuova riga per poter verificare che il preferito resti in memoria anche se la row non è più presente imposto
+            un bottone che eliminerà la row e se ricercato ancora l'artista dovrà esserci ancora il preferito.
+            Si può verificaare la stessa cosa selezinando un preferito e ricercando di nuovo l'artista e il preferito è già presente
+            */}
+        <h2>
+          {songs !== undefined && songs[0].artist.name}
+          <BsTrash3Fill className="trashArt" onClick={() => dispatch({ type: REMOVE_ARTIST, payload: artIndex })} />
+        </h2>
         <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 imgLinks py-3">
           {songs !== undefined && songs.map((song) => <Song key={song.id} song={song} />)}
         </div>

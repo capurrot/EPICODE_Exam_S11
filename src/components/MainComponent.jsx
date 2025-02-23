@@ -15,9 +15,9 @@ const MainComponent = () => {
           <a href="#">DISCOVER</a>
         </div>
       </div>
-      {artists.map((artist) => (
-        <div className="row" key={artist}>
-          <SongList artist={artist} className="col-10" />
+      {artists.map((artist, artIndex) => (
+        <div className="row" key={artIndex}>
+          <SongList artist={artist} artIndex={artIndex} className="col-10" />
         </div>
       ))}
     </main>

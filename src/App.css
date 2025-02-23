@@ -198,3 +198,14 @@ ul {
   color: white;
   font-weight: 700;
 }
+
+.trashArt {
+  font-size: 1.5rem;
+  padding-bottom: 3px;
+  margin-left: 0.5rem;
+  cursor: pointer;
+}
+
+.trashArt:hover {
+  color: rgb(255, 215, 40);
+}

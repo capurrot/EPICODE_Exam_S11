@@ -1,4 +1,4 @@
-import { SEARCH_ARTIST } from "../actions";
+import { REMOVE_ARTIST, SEARCH_ARTIST } from "../actions";
 
 const initialState = {
   list: {
@@ -13,7 +13,18 @@ const artistsReducer = (state = initialState, action) => {
         ...state,
         list: {
           ...state.list,
+          /* Per impostare che l'artista ricercato venga messo come primo della lista 
+            metto l'action.payload prima dello state list
+          */
           content: [action.payload, ...state.list.content],
+        },
+      };
+    case REMOVE_ARTIST:
+      return {
+        ...state,
+        list: {
+          ...state.list,
+          content: state.list.content.filter((_, artIndex) => artIndex !== action.payload),
         },
       };
     default:
