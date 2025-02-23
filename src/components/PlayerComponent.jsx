@@ -5,9 +5,13 @@ import repeatIcon from "../assets/playerbuttons/repeat.png";
 import shuffleIcon from "../assets/playerbuttons/shuffle.png";
 import { Container, Image } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import { BsFillHeartFill } from "react-icons/bs";
 
 const PlayerComponent = () => {
   const songSelected = useSelector((state) => state.songs.songSelected.content);
+  const favourites = useSelector((state) => state.songs.favourites.content);
+  const isSongInFavourites = favourites.some((favSong) => favSong.id === songSelected.id);
+
   return (
     <Container fluid className="fixed-bottom bg-container pt-1">
       <div className="row h-100">
@@ -18,7 +22,16 @@ const PlayerComponent = () => {
                 {songSelected && (
                   <>
                     <div className="d-flex">
-                      <Image src={songSelected.album.cover_small} height={70} />
+                      {/* Imposto che se il brano è tra i favoriti lo visualizzi anche sul player.
+                      Avevo impostato un corto circuito ma poi ho messo un ternario con il colore trasparente
+                      per evitare che alla non visualizzazione dell'icona l'immagine si spostasse               
+                      */}
+                      {isSongInFavourites ? (
+                        <BsFillHeartFill className="heartPlayer" />
+                      ) : (
+                        <BsFillHeartFill className="heartPlayer" style={{ color: "transparent" }} />
+                      )}
+                      <Image src={songSelected.album.cover_small} height={70} style={{ marginLeft: "-1rem" }} />
                       <p className="ms-2 mt-2 infoArtist">
                         {songSelected.title}
                         <br />
