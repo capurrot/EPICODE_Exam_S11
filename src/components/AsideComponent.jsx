@@ -1,9 +1,10 @@
-import { BsBookFill, BsHouseDoorFill } from "react-icons/bs";
+import { BsBookFill, BsHeartFill, BsHouseDoorFill } from "react-icons/bs";
 import logo from "../assets/logo/logo.png";
-import { Navbar, Button, NavLink, Form, InputGroup, FormControl } from "react-bootstrap";
+import { Navbar, Button, Form, InputGroup, FormControl } from "react-bootstrap";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { SEARCH_ARTIST } from "../redux/actions";
+import { Link } from "react-router";
 
 const AsideComponent = () => {
   const [query, setQuery] = useState("");
@@ -19,9 +20,9 @@ const AsideComponent = () => {
     <aside className="col col-2">
       <Navbar className="navbar navbar-expand-md fixed-left justify-content-between" id="sidebar">
         <div className="container flex-column align-items-start">
-          <NavLink className="navbar-brand" to="/">
+          <Link className="navbar-brand" to="/">
             <img src={logo} alt="Spotify Logo" width="131" height="40" />
-          </NavLink>
+          </Link>
           <Button
             className="navbar-toggler"
             type="button"
@@ -37,16 +38,23 @@ const AsideComponent = () => {
             <div className="navbar-nav">
               <ul>
                 <li>
-                  <a className="nav-item nav-link d-flex align-items-center" href="#">
+                  <Link className="nav-item nav-link d-flex align-items-center" to="/">
                     <BsHouseDoorFill />
                     &nbsp; Home
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <a className="nav-item nav-link d-flex align-items-center" href="#">
                     <BsBookFill />
                     &nbsp; Your Library+
                   </a>
+                </li>
+                {/* Agguingo una sezione ddove vedere tutti i preferiti */}
+                <li>
+                  <Link className="nav-item nav-link d-flex align-items-center" to="/favourites">
+                    <BsHeartFill />
+                    &nbsp; Favourites
+                  </Link>
                 </li>
                 <li>
                   <Form onSubmit={handleSearch} className="mt-3">
